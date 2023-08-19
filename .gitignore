@@ -39,4 +39,4 @@
 .env
 
 # ライブラリはバージョン管理しない
-/vendor
+/vendor/bundle
