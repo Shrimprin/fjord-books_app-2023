@@ -37,3 +37,6 @@
 /public/uploads
 
 .env
+
+# ライブラリはバージョン管理しない
+/vendor/bundle
