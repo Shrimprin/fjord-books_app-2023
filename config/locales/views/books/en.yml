@@ -1,0 +1,22 @@
+ja:
+  books:
+    common:
+      back: Back to index
+
+    index:
+      title: Index
+      show: Detail
+      new: New
+
+    new:
+      title: New
+
+    show:
+      edit: Edit
+      destroy: Delete
+
+    edit:
+      title: Edit
+      show: Back to detail
+
+

@@ -1,0 +1,19 @@
+current directory: /home/kuroneko/fjord/fjord-books_app-2023/vendor/bundle/ruby/3.2.0/gems/debug-1.8.0/ext/debug
+/home/kuroneko/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/kuroneko/fjord/fjord-books_app-2023/vendor/bundle/ruby/3.2.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230817-7188-743j7z sitelibdir\=./.gem.20230817-7188-743j7z clean
+
+current directory: /home/kuroneko/fjord/fjord-books_app-2023/vendor/bundle/ruby/3.2.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230817-7188-743j7z sitelibdir\=./.gem.20230817-7188-743j7z
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/kuroneko/fjord/fjord-books_app-2023/vendor/bundle/ruby/3.2.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230817-7188-743j7z sitelibdir\=./.gem.20230817-7188-743j7z install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20230817-7188-743j7z/debug
+
+current directory: /home/kuroneko/fjord/fjord-books_app-2023/vendor/bundle/ruby/3.2.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230817-7188-743j7z sitelibdir\=./.gem.20230817-7188-743j7z clean
