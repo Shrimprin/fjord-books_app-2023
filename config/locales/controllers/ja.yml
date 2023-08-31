@@ -1,0 +1,5 @@
+ja:
+  common:
+    notice_create: "%{name}を新規作成しました。"
+    notice_update: "%{name}を更新しました。"
+    notice_destroy: "%{name}を削除しました。"

@@ -1,0 +1,20 @@
+en:
+  books:
+    common:
+      back: Back to index
+
+    index:
+      title: "List of %{model_name}"
+      show: Detail
+      new: New
+
+    new:
+      title: New
+
+    show:
+      edit: Edit
+      destroy: Delete
+
+    edit:
+      title: Edit
+      show: Back to detail
