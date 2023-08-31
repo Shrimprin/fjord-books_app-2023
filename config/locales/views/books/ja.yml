@@ -4,7 +4,7 @@ ja:
       back: 一覧に戻る
 
     index:
-      title: 本の一覧
+      title: "%{model_name}の一覧"
       show: 詳細
       new: 新規作成
 

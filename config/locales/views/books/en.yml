@@ -4,7 +4,7 @@ en:
       back: Back to index
 
     index:
-      title: Index
+      title: "List of %{model_name}"
       show: Detail
       new: New
 
