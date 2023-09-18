@@ -21,6 +21,21 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :self_introduction %><br />
+    <%= f.text_field :self_introduction, autofocus: true %>
+  </div>
+
   <div class="actions">
     <%= f.submit t('.sign_up') %>
   </div>
