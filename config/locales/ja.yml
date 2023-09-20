@@ -194,14 +194,23 @@ ja:
       title_edit: "%{name}の編集"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
+      sign_up: 登録
+      login: ログイン
+      logout: ログアウト
+      edit_profile: プロフィール編集
+      list: "%{model_name}の一覧"
+      badk: 戻る
     pagination:
       first: '« 最初'
       last: '最後 »'
       previous: '‹ 前'
       next: '次 ›'
       truncate: '…'
+    users:
+      title: "%{email}のプロフィール"
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+

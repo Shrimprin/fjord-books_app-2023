@@ -1,2 +1,9 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2><%= t('views.users.title', email: @user.email) %></h2>
+
+<div class="show-item">
+  <%= render @user %>
+</div>
+
+<nav class="page-nav">
+  <%= link_to t('views.common.back', name: i18n_pluralize(User.model_name.human)), users_path %>
+</nav>
