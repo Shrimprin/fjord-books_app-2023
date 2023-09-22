@@ -44,6 +44,7 @@ end
 
 50.times do |i|
   User.create!(
+    name: Faker::Name.name,
     email: "#{i}@hoge.com",
     password: "testpass#{i}",
     postal_code: "#{i}-#{i}",
