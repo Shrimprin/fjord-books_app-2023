@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   devise_for :users
-  resources :books
   resources :users, only: [:index, :show]
+  resources :books
   root to: 'books#index'
 end
