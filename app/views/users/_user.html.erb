@@ -11,6 +11,11 @@
   </p>
 
   <p>
+    <strong>Icon</strong>
+    <%= image_tag user.icon.variant(resize_to_limit: [100, 100]) if user.icon.present? %>
+  </p>
+
+  <p>
     <strong><%= User.human_attribute_name(:postal_code) %>:</strong>
     <%= user.postal_code %>
   </p>
