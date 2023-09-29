@@ -53,7 +53,7 @@ User.destroy_all
     postal_code: "123-#{n.to_s.rjust(4, '0')}",
     address: Faker::Address.full_address,
     self_introduction: "こんにちは、#{name}です。"
-  )
+  ).icon.attach(io: File.open(Rails.root.join('db/seeds/cat.jpg')), filename: 'cat.jpg')
 end
 
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output

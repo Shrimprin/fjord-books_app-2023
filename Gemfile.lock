@@ -336,7 +336,7 @@ DEPENDENCIES
   erb_lint
   faker
   i18n_generators
-  image_processing (~> 1.2)
+  image_processing
   importmap-rails
   jbuilder
   kaminari
