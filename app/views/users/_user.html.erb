@@ -27,7 +27,7 @@
 
   <p>
     <strong><%= User.human_attribute_name(:icon) %>:</strong>
-    <%= image_tag user.icon.variant(resize_to_limit: [100, 100]) if user.icon.present? %>
+    <%= image_tag user.icon.variant(:display) if user.icon.attached? %>
   </p>
 
 </div>

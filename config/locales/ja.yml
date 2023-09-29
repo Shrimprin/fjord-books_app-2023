@@ -7,6 +7,9 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+        icon: 
+          content_type: ": アップロードできる画像フォーマットは【 %{type} 】です"
+          size: ": アップロードできるファイルサイズの上限は【 %{limit} 】です"
   date:
     abbr_day_names:
     - 日
@@ -112,7 +115,7 @@ ja:
       wrong_length: は%{count}文字で入力してください
     template:
       body: 次の項目を確認してください
-      header: "%{model}に%{count}個のエラーが発生しました"
+      header: "%{model}に%{count}個のエラーが発生しました"          
   helpers:
     select:
       prompt: 選択してください
