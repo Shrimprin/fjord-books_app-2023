@@ -14,6 +14,8 @@
 
   <%= render 'devise/registrations/profile_fields', f: f %>
 
+  <%= image_tag @user.icon.variant(:display) if @user.icon.blob.content_type.start_with? 'image/' %>
+
   <div class="field">
     <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
