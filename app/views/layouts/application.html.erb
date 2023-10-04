@@ -11,6 +11,24 @@
   </head>
 
   <body class="<%= params[:action] %>">
+    <p class="navbar-text pull-right">
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to t('views.common.edit_profile'), edit_user_registration_path, class: 'navbar-link' %>
+        <%= link_to t('views.common.list', model_name: i18n_pluralize(Book.model_name.human)), books_path, class: 'navbar-link' %>
+        <%= link_to t('views.common.list', model_name: i18n_pluralize(User.model_name.human)), users_path, class: 'navbar-link' %>
+        <%= link_to t('views.common.logout'), destroy_user_session_path, method: :delete, class: 'navbar-link' %>
+      <% else %>
+        <%= link_to t('views.common.sign_up'), new_user_registration_path, class: 'navbar-link' %> |
+        <%= link_to t('views.common.login'), new_user_session_path, class: 'navbar-link' %>
+      <% end %>
+    </p>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
