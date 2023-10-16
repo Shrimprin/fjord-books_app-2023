@@ -1,5 +1,5 @@
 <%= turbo_frame_tag comment do %>
-  <div class="show-item">
+  <div class="show-item comment-partial">
     <p>
       <strong><%= Comment.human_attribute_name(:user) %>:</strong>
       <%= current_user_name(comment.user) %>
