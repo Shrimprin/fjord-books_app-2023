@@ -3,7 +3,9 @@
 <div id="comments">
   <% if comments.any? %>
     <% comments.each do |comment| %>
-      <%= render 'comments/comment', comment: comment %>
+      <div class="comment-partial">
+        <%= render 'comments/comment', comment: comment %>
+      </div>
     <% end %>
   <% else %>
     <%= t('views.comments.nothing') %>
