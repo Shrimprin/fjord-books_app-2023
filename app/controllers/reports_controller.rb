@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'uri'
+
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[edit update destroy]
 
@@ -21,17 +23,29 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.new(report_params)
 
-    if @report.save
+    begin
+      ApplicationRecord.transaction do
+        @report.save!
+        save_mentions
+      end
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-    else
+    rescue ActiveRecord::RecordInvalid => e
+      flash.now[:alert] = e
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    if @report.update(report_params)
+    @report.assign_attributes(report_params)
+
+    begin
+      ApplicationRecord.transaction do
+        @report.save!
+        save_mentions
+      end
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-    else
+    rescue ActiveRecord::RecordInvalid => e
+      flash.now[:alert] = e
       render :edit, status: :unprocessable_entity
     end
   end
@@ -50,5 +64,17 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:title, :content)
+  end
+
+  def save_mentions
+    @report.active_mentions.destroy_all if @report.active_mentions.any?
+    report_ids = extract_report_ids(@report.content)
+    report_ids.each do |report_id|
+      Mention.create!(mentioning_report_id: @report.id, mentioned_report_id: report_id)
+    end
+  end
+
+  def extract_report_ids(text, regexp = %r{http://localhost:3000/reports/(\d+)})
+    text.to_s.scan(regexp).flatten.uniq
   end
 end
