@@ -1,0 +1,10 @@
+.mentions-container {
+  margin-top: 32px;
+  max-width: var(--single-column-w);
+}
+
+.comments-container li small {
+  display: block;
+  font-size: 12px;
+  margin-top: 8px;
+}
