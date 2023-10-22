@@ -5,6 +5,7 @@ ja:
       user: ユーザ
       report: 日報
       comment: コメント
+      mention: 言及
 
     attributes:
       book:
@@ -23,3 +24,6 @@ ja:
         content: 内容
         user: 作成者
         created_on: 作成日
+      mention:
+        mentioning_report: 言及先
+        mentioned_report: 言及元

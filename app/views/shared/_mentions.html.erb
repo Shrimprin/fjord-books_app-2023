@@ -1,0 +1,11 @@
+<div class="mention-container">
+<% if mentioned_reports.any? %>
+  <strong><%= t('views.common.mention_title', name: Report.model_name.human) %></strong>
+  <ul>
+    <% mentioned_reports.each do |report| %>
+      <li>
+        <%= link_to report.title, report %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
