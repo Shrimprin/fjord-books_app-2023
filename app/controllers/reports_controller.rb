@@ -75,6 +75,6 @@ class ReportsController < ApplicationController
   end
 
   def extract_report_ids(text, regexp = %r{http://localhost:3000/reports/(\d+)})
-    text.to_s.scan(regexp).flatten.uniq
+    text.scan(regexp).flatten.uniq
   end
 end
