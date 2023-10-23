@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def auto_link_urls(text)
-    uri_reg = URI.regexp(%w[http https])
+    uri_reg = URI::DEFAULT_PARSER.make_regexp(%w[http https])
     linked_text =
       text.gsub(uri_reg) do |url|
         "<a href=#{url}>#{url}</a>"
