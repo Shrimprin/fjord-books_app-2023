@@ -16,7 +16,7 @@
 
   <p>
     <strong><%= Report.human_attribute_name(:content) %>:</strong><br>
-    <%= format_content(report.content) %>
+    <%= simple_format(h(report.content), class: 'simple-format') %>
   </p>
 
 </div>
