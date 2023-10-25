@@ -1,5 +1,5 @@
 <%= turbo_frame_tag comment do %>
-  <div class="show-item comment-partial">
+  <div class="show-comment">
     <p>
       <strong><%= Comment.human_attribute_name(:user) %>:</strong>
       <%= current_user_name(comment.user) %>
@@ -9,8 +9,8 @@
       <%= format_time_to_jst(comment.created_at) %>
     </p>
     <p>
-      <strong><%= Comment.human_attribute_name(:content) %>:</strong><br>
-      <%= format_content(comment.content) %>
+      <strong><%= Comment.human_attribute_name(:content) %>:</strong>
+      <%= simple_format(h(comment.content), class: 'simple-format') %>
     </p>
 
     <div>

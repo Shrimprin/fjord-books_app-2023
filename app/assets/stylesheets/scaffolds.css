@@ -319,10 +319,3 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: var(--global-primary-c-hover);
 }
-
-/****************
-Comment Partial
-****************/
-.comment-partial {
-  margin-bottom: 10px;
-}
