@@ -1,0 +1,23 @@
+<%= turbo_frame_tag comment do %>
+  <div class="show-comment">
+    <p>
+      <strong><%= Comment.human_attribute_name(:user) %>:</strong>
+      <%= current_user_name(comment.user) %>
+    </p>
+    <p>
+      <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
+      <%= l comment.created_at %>
+    </p>
+    <p>
+      <strong><%= Comment.human_attribute_name(:content) %>:</strong>
+      <%= simple_format(h(comment.content), class: 'simple-format') %>
+    </p>
+
+    <div>
+      <% if comment.user_id == current_user.id %>
+        <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_polymorphic_path([comment.commentable, comment]) %> |
+        <%= link_to t('views.common.destroy', name: Comment.model_name.human.downcase), polymorphic_path([comment.commentable, comment]), data: { turbo_method: :delete, turbo_confirm: t('views.common.delete_confirm') } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
