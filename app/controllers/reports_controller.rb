@@ -54,6 +54,6 @@ class ReportsController < ApplicationController
   end
 
   def check_user
-    redirect_to reports_url unless @report.user_id == current_user.id
+    redirect_to reports_url if @report.user_id != current_user.id
   end
 end
