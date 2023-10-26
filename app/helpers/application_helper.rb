@@ -15,10 +15,6 @@ module ApplicationHelper
     I18n.locale == :ja ? "#{count}件の#{t('views.common.error')}" : pluralize(count, t('views.common.error'))
   end
 
-  def format_time(time)
-    time.in_time_zone('Tokyo').strftime('%Y-%m-%d %H:%M:%S')
-  end
-
   def turbo_stream_flash
     turbo_stream.update 'flash', partial: 'shared/flash'
   end
