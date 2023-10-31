@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
     begin
       ApplicationRecord.transaction do
         @report.save!
-        save_mentions
+        @report.save_mentions
       end
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     rescue ActiveRecord::RecordInvalid => e
@@ -41,7 +41,7 @@ class ReportsController < ApplicationController
     begin
       ApplicationRecord.transaction do
         @report.save!
-        save_mentions
+        @report.save_mentions
       end
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     rescue ActiveRecord::RecordInvalid => e
@@ -64,17 +64,5 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:title, :content)
-  end
-
-  def save_mentions
-    @report.active_mentions.destroy_all if @report.active_mentions.any?
-    report_ids = extract_report_ids(@report.content)
-    report_ids.each do |report_id|
-      Mention.create!(mentioning_report_id: @report.id, mentioned_report_id: report_id)
-    end
-  end
-
-  def extract_report_ids(text, regexp = %r{http://localhost:3000/reports/(\d+)})
-    text.scan(regexp).flatten.uniq
   end
 end
