@@ -32,7 +32,7 @@ class Report < ApplicationRecord
   def save_mentions
     self.active_mentions.destroy_all if self.active_mentions.any?
     report_ids = extract_report_ids(self.content)
-    self.mentioning_reports << Report.where(id: report_ids)
+    self.mentioning_reports += Report.where(id: report_ids)
 
     true
   end
