@@ -196,6 +196,8 @@ ja:
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       title_show: "%{name}の詳細"
       sign_out: ログアウト
+      mention_title: "この%{name}は以下の%{name}から言及されています"
+      mention_by: から言及
     pagination:
       first: '« 最初'
       last: '最後 »'
