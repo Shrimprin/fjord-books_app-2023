@@ -23,12 +23,18 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
+  def save_with_mentions
+    transaction do
+      save && save_mentions
+    end
+  end
+
   def save_mentions
     self.active_mentions.destroy_all if self.active_mentions.any?
     report_ids = extract_report_ids(self.content)
-    report_ids.each do |report_id|
-      self.active_mentions.create!(mentioned_report_id: report_id)
-    end
+    self.mentioning_reports << Report.where(id: report_ids)
+
+    true
   end
 
   def extract_report_ids(text, regexp = %r{http://localhost:3000/reports/(\d+)})
