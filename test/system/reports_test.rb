@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:test_report)
+    @report = reports(:alice_report)
     visit root_url
 
     fill_in User.human_attribute_name(:email), with: 'alice@example.com'
