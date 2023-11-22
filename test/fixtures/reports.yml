@@ -2,5 +2,20 @@
 
 alice_report:
   user: alice
-  title: テストレポートのタイトル
-  content: テストレポートの内容
+  title: アリスレポートのタイトル
+  content: アリスレポートの内容
+
+bob_report:
+  user: bob
+  title: ボブレポートのタイトル
+  content: ボブレポートの内容
+
+carol_report:
+  user: carol
+  title: キャロルレポートのタイトル
+  content: キャロルレポートの内容
+
+dave_report:
+  user: dave
+  title: デイブレポートのタイトル
+  content: デイブレポートの内容
