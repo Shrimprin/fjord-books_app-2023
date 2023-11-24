@@ -3,7 +3,6 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-
   test '#editable? should return true when user is author' do
     alice_report = reports(:alice_report)
     assert alice_report.editable?(users(:alice))

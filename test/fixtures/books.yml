@@ -1,9 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  memo: MyText
-
-two:
-  title: MyString
-  memo: MyText
+alice_book:
+  title: 不思議の国のアリス
+  memo: 幼い少女アリスが白ウサギを追いかけて不思議の国に迷い込み、しゃべる動物や動くトランプなどさまざまなキャラクターたちと出会いながらその世界を冒険するさまを描いている。
+  author: ルイス・キャロル
