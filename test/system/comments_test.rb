@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class BooksTest < ApplicationSystemTestCase
+class CommentsTest < ApplicationSystemTestCase
   setup do
     @book = books(:alice_book)
     @report = reports(:alice_report)
@@ -48,18 +48,22 @@ class BooksTest < ApplicationSystemTestCase
   test 'should destroy Report' do
     # 本へのコメント
     visit book_url(@book)
+    assert_text '私も読みました！'
     accept_confirm do
       click_on I18n.t('shared.comments.delete'), match: :first
     end
     assert_text I18n.t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    assert_no_text '私も読みました！'
     assert_text I18n.t('shared.comments.no_comments')
 
     # 日報へのコメント
     visit report_url(@report)
+    assert_text '目から鱗です！'
     accept_confirm do
       click_on I18n.t('shared.comments.delete'), match: :first
     end
     assert_text I18n.t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    assert_no_text '目から鱗です！'
     assert_text I18n.t('shared.comments.no_comments')
   end
 end

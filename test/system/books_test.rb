@@ -42,6 +42,11 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'should update Book' do
     visit book_url(@book)
+    assert_text '不思議の国のアリス'
+    assert_text '幼い少女アリスが白ウサギを追いかけて不思議の国に迷い込み、しゃべる動物や動くトランプなどさまざまなキャラクターたちと出会いながらその世界を冒険するさまを描いている。'
+    assert_text 'ルイス・キャロル'
+    assert_no_selector "img[src*='/uploads/book/picture/']"
+
     click_on I18n.t('views.common.edit', name: Book.model_name.human), match: :first
 
     fill_in Book.human_attribute_name(:title), with: '黒猫の一日(改訂版)'
@@ -52,6 +57,9 @@ class BooksTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.submit.update')
 
     assert_text I18n.t('controllers.common.notice_update', name: Book.model_name.human)
+    assert_no_text '不思議の国のアリス'
+    assert_no_text '幼い少女アリスが白ウサギを追いかけて不思議の国に迷い込み、しゃべる動物や動くトランプなどさまざまなキャラクターたちと出会いながらその世界を冒険するさまを描いている。'
+    assert_no_text 'ルイス・キャロル'
     assert_text '黒猫の一日(改訂版)'
     assert_text '相変わらず猫かわいい'
     assert_text 'Kuro Nekosuke'

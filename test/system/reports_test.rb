@@ -37,6 +37,9 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'should update Report' do
     visit report_url(@report)
+    assert_text 'アリスレポートのタイトル'
+    assert_text 'アリスレポートの内容'
+
     click_on I18n.t('views.common.edit', name: Report.model_name.human), match: :first
 
     fill_in Report.human_attribute_name(:title), with: '今日の天気（更新）'
@@ -44,6 +47,8 @@ class ReportsTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.submit.update')
 
     assert_text I18n.t('controllers.common.notice_update', name: Report.model_name.human)
+    assert_no_text 'アリスレポートのタイトル'
+    assert_no_text 'アリスレポートの内容'
     assert_text '今日の天気（更新）'
     assert_text '今日は晴れのち曇り...'
     click_on I18n.t('views.common.back', name: Report.model_name.human)
