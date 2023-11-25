@@ -4,6 +4,7 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
+    @book = books(:alice_book)
     visit root_url
 
     fill_in User.human_attribute_name(:email), with: 'alice@example.com'
@@ -35,29 +36,34 @@ class BooksTest < ApplicationSystemTestCase
     assert_text '猫かわいい'
     assert_text 'Kuroneko'
     book = Book.last
-    assert_selector "img[src*='/uploads/book/picture/#{book.id}/']"
+    assert_selector "img[src*='/uploads/book/picture/#{book.id}/avatar.jpg']"
     click_on I18n.t('views.common.back', name: Book.model_name.human)
   end
 
-  # test 'should update Report' do
-  #   visit book_url(@report)
-  #   click_on I18n.t('views.common.edit', name: Report.model_name.human), match: :first
+  test 'should update Book' do
+    visit book_url(@book)
+    click_on I18n.t('views.common.edit', name: Book.model_name.human), match: :first
 
-  #   fill_in Report.human_attribute_name(:content), with: '今日は晴れのち曇り...'
-  #   fill_in Report.human_attribute_name(:title), with: '今日の天気（更新）'
-  #   click_on I18n.t('helpers.submit.update')
+    fill_in Book.human_attribute_name(:title), with: '黒猫の一日(改訂版)'
+    fill_in Book.human_attribute_name(:memo), with: '相変わらず猫かわいい'
+    fill_in Book.human_attribute_name(:author), with: 'Kuro Nekosuke'
+    attach_file Book.human_attribute_name(:picture), Rails.root.join('test/fixtures/files/avatar.jpg')
 
-  #   assert_text I18n.t('controllers.common.notice_update', name: Report.model_name.human)
-  #   assert_text '今日の天気（更新）'
-  #   assert_text '今日は晴れのち曇り...'
-  #   click_on I18n.t('views.common.back', name: Report.model_name.human)
-  # end
+    click_on I18n.t('helpers.submit.update')
 
-  # test 'should destroy Report' do
-  #   visit report_url(@report)
-  #   click_on I18n.t('views.common.destroy', name: Report.model_name.human), match: :first
+    assert_text I18n.t('controllers.common.notice_update', name: Book.model_name.human)
+    assert_text '黒猫の一日(改訂版)'
+    assert_text '相変わらず猫かわいい'
+    assert_text 'Kuro Nekosuke'
+    assert_selector "img[src*='/uploads/book/picture/#{@book.id}/avatar.jpg']"
+    click_on I18n.t('views.common.back', name: Book.model_name.human)
+  end
 
-  #   assert_text I18n.t('controllers.common.notice_destroy', name: Report.model_name.human)
-  #   assert_selector 'h1', text: I18n.t('views.common.title_index', name: Report.model_name.human)
-  # end
+  test 'should destroy Report' do
+    visit book_url(@book)
+    click_on I18n.t('views.common.destroy', name: Book.model_name.human), match: :first
+
+    assert_text I18n.t('controllers.common.notice_destroy', name: Book.model_name.human)
+    assert_selector 'h1', text: I18n.t('views.common.title_index', name: Book.model_name.human)
+  end
 end
