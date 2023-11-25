@@ -39,8 +39,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit report_url(@report)
     click_on I18n.t('views.common.edit', name: Report.model_name.human), match: :first
 
-    fill_in Report.human_attribute_name(:content), with: '今日は晴れのち曇り...'
     fill_in Report.human_attribute_name(:title), with: '今日の天気（更新）'
+    fill_in Report.human_attribute_name(:content), with: '今日は晴れのち曇り...'
     click_on I18n.t('helpers.submit.update')
 
     assert_text I18n.t('controllers.common.notice_update', name: Report.model_name.human)
