@@ -1,11 +1,11 @@
 alice_to_bob_mention:
-  mention_to: alice_report
-  mentioned_by: bob_report
+  mention_to: alice_mention_report
+  mentioned_by: bob_mention_report
 
 bob_to_alice_mention:
-  mention_to: bob_report
-  mentioned_by: alice_report
+  mention_to: bob_mention_report
+  mentioned_by: alice_mention_report
 
 carol_to_alice_mention:
-  mention_to: carol_report
-  mentioned_by: alice_report
+  mention_to: carol_mention_report
+  mentioned_by: alice_mention_report

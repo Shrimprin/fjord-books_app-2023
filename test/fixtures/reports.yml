@@ -17,3 +17,18 @@ dave_report:
   user: dave
   title: デイブレポートのタイトル
   content: デイブレポートの内容
+
+alice_mention_report:
+  user: alice
+  title: アリスの言及レポート
+  content: 言及してね。
+
+bob_mention_report:
+  user: bob
+  title: ボブの言及レポート
+  content: 言及します。
+
+carol_mention_report:
+  user: carol
+  title: キャロルの言及レポート
+  content: 言及します。
