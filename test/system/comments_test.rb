@@ -28,8 +28,8 @@ class CommentsTest < ApplicationSystemTestCase
   test 'should create comment' do
     # 本へのコメント
     visit book_url(@book)
-    # fill_in Comment.human_attribute_name(:content), with: '素晴らしいですね！'
-    fill_in 'comment[content]', with: '素晴らしいですね！' # human_attributeだとElementNotFoundとなる
+
+    fill_in 'comment[content]', with: '素晴らしいですね！'
     click_on I18n.t('shared.comments.create')
 
     assert_text I18n.t('controllers.common.notice_create', name: Comment.model_name.human)
@@ -37,8 +37,8 @@ class CommentsTest < ApplicationSystemTestCase
 
     # 日報へのコメント
     visit book_url(@book)
-    # fill_in Comment.human_attribute_name(:content), with: '素晴らしいですね！'
-    fill_in 'comment[content]', with: '素晴らしいですね！' # human_attributeだとElementNotFoundとなる
+
+    fill_in 'comment[content]', with: '素晴らしいですね！'
     click_on I18n.t('shared.comments.create')
 
     assert_text I18n.t('controllers.common.notice_create', name: Comment.model_name.human)
