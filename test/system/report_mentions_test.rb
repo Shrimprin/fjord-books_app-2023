@@ -39,7 +39,7 @@ class ReportMentionsTest < ApplicationSystemTestCase
   test 'should update Mention' do
     visit report_url(@bob_report)
     assert_text 'アリスレポートのタイトル'
-    
+
     visit report_url(@alice_report)
     click_on I18n.t('views.common.edit', name: Report.model_name.human), match: :first
 

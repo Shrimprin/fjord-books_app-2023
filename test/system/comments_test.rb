@@ -32,7 +32,7 @@ class CommentsTest < ApplicationSystemTestCase
     fill_in 'comment[content]', with: '素晴らしいですね！' # human_attributeだとElementNotFoundとなる
     click_on I18n.t('shared.comments.create')
 
-    assert_text I18n.t('controllers.common.notice_create', name:Comment.model_name.human)
+    assert_text I18n.t('controllers.common.notice_create', name: Comment.model_name.human)
     assert_text '素晴らしいですね！'
 
     # 日報へのコメント
@@ -41,7 +41,7 @@ class CommentsTest < ApplicationSystemTestCase
     fill_in 'comment[content]', with: '素晴らしいですね！' # human_attributeだとElementNotFoundとなる
     click_on I18n.t('shared.comments.create')
 
-    assert_text I18n.t('controllers.common.notice_create', name:Comment.model_name.human)
+    assert_text I18n.t('controllers.common.notice_create', name: Comment.model_name.human)
     assert_text '素晴らしいですね！'
   end
 
