@@ -45,7 +45,7 @@ class CommentsTest < ApplicationSystemTestCase
     assert_text '素晴らしいですね！'
   end
 
-  test 'should destroy Report' do
+  test 'should destroy comment' do
     # 本へのコメント
     visit book_url(@book)
     assert_text '私も読みました！'
@@ -66,4 +66,5 @@ class CommentsTest < ApplicationSystemTestCase
     assert_no_text '目から鱗です！'
     assert_text I18n.t('shared.comments.no_comments')
   end
+
 end
