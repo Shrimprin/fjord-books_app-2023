@@ -1,11 +1,35 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+alice_report:
+  user: alice
+  title: アリスレポートのタイトル
+  content: アリスレポートの内容
+  created_at: 2021-11-30 00:00:00
 
-one:
-  user: one
-  title: MyString
-  content: MyText
+bob_report:
+  user: bob
+  title: ボブレポートのタイトル
+  content: ボブレポートの内容
 
-two:
-  user: two
-  title: MyString
-  content: MyText
+carol_report:
+  user: carol
+  title: キャロルレポートのタイトル
+  content: キャロルレポートの内容
+
+dave_report:
+  user: dave
+  title: デイブレポートのタイトル
+  content: デイブレポートの内容
+
+alice_mention_report:
+  user: alice
+  title: アリスの言及レポート
+  content: 言及してね。
+
+bob_mention_report:
+  user: bob
+  title: ボブの言及レポート
+  content: 言及します。
+
+carol_mention_report:
+  user: carol
+  title: キャロルの言及レポート
+  content: 言及します。

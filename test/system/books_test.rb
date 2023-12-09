@@ -4,42 +4,74 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
+    @book = books(:alice_book)
+    visit root_url
+
+    fill_in User.human_attribute_name(:email), with: 'alice@example.com'
+    fill_in User.human_attribute_name(:password), with: 'password'
+    click_button I18n.t('devise.shared.links.sign_in')
+
+    assert_css 'h1', text: Book.model_name.human # CapybaraにTurbolinks処理完了を待たせる
   end
 
   test 'visiting the index' do
     visit books_url
-    assert_selector 'h1', text: 'Books'
+
+    assert_selector 'h1', text: I18n.t('views.common.title_index', name: Book.model_name.human)
   end
 
   test 'should create book' do
     visit books_url
-    click_on 'New book'
+    click_on I18n.t('views.common.new', name: Book.model_name.human)
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
+    fill_in Book.human_attribute_name(:title), with: '黒猫の一日'
+    fill_in Book.human_attribute_name(:memo), with: '猫かわいい'
+    fill_in Book.human_attribute_name(:author), with: 'Kuroneko'
+    attach_file Book.human_attribute_name(:picture), Rails.root.join('test/fixtures/files/avatar.jpg')
 
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+    click_on I18n.t('helpers.submit.create')
+
+    assert_text I18n.t('controllers.common.notice_create', name: Book.model_name.human)
+    assert_text '黒猫の一日'
+    assert_text '猫かわいい'
+    assert_text 'Kuroneko'
+    book = Book.last
+    assert_selector "img[src*='/uploads/book/picture/#{book.id}/avatar.jpg']"
+    click_on I18n.t('views.common.back', name: Book.model_name.human)
   end
 
   test 'should update Book' do
     visit book_url(@book)
-    click_on 'Edit this book', match: :first
+    assert_text '不思議の国のアリス'
+    assert_text '幼い少女アリスが白ウサギを追いかけて不思議の国に迷い込み、しゃべる動物や動くトランプなどさまざまなキャラクターたちと出会いながらその世界を冒険するさまを描いている。'
+    assert_text 'ルイス・キャロル'
+    assert_no_selector "img[src*='/uploads/book/picture/']"
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
+    click_on I18n.t('views.common.edit', name: Book.model_name.human), match: :first
 
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
+    fill_in Book.human_attribute_name(:title), with: '黒猫の一日(改訂版)'
+    fill_in Book.human_attribute_name(:memo), with: '相変わらず猫かわいい'
+    fill_in Book.human_attribute_name(:author), with: 'Kuro Nekosuke'
+    attach_file Book.human_attribute_name(:picture), Rails.root.join('test/fixtures/files/avatar.jpg')
+
+    click_on I18n.t('helpers.submit.update')
+
+    assert_text I18n.t('controllers.common.notice_update', name: Book.model_name.human)
+    assert_no_text '不思議の国のアリス'
+    assert_no_text '幼い少女アリスが白ウサギを追いかけて不思議の国に迷い込み、しゃべる動物や動くトランプなどさまざまなキャラクターたちと出会いながらその世界を冒険するさまを描いている。'
+    assert_no_text 'ルイス・キャロル'
+    assert_text '黒猫の一日(改訂版)'
+    assert_text '相変わらず猫かわいい'
+    assert_text 'Kuro Nekosuke'
+    assert_selector "img[src*='/uploads/book/picture/#{@book.id}/avatar.jpg']"
+    click_on I18n.t('views.common.back', name: Book.model_name.human)
   end
 
-  test 'should destroy Book' do
+  test 'should destroy Report' do
     visit book_url(@book)
-    click_on 'Destroy this book', match: :first
+    click_on I18n.t('views.common.destroy', name: Book.model_name.human), match: :first
 
-    assert_text 'Book was successfully destroyed'
+    assert_text I18n.t('controllers.common.notice_destroy', name: Book.model_name.human)
+    assert_selector 'h1', text: I18n.t('views.common.title_index', name: Book.model_name.human)
   end
 end
