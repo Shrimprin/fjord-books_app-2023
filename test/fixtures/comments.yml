@@ -9,3 +9,15 @@ alice_report_comment:
   commentable: alice_report
   commentable_type: Report
   content: 目から鱗です！
+
+bob_book_comment:
+  user: bob
+  commentable: cat_book
+  commentable_type: Book
+  content: この本は最高ですよね！
+
+bob_report_comment:
+  user: bob
+  commentable: carol_report
+  commentable_type: Report
+  content: 分ります！

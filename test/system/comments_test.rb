@@ -67,4 +67,15 @@ class CommentsTest < ApplicationSystemTestCase
     assert_text I18n.t('shared.comments.no_comments')
   end
 
+  test 'should not destory comment when current user is not author' do
+    # 本へのコメント
+    cat_book = books(:cat_book)
+    visit book_url(cat_book)
+    refute_selector :button, text: '削除', exact_text: true # 本の削除ボタンボタンにマッチしないように完全一致
+
+    # 日報へのコメント
+    carol_report = reports(:carol_report)
+    visit report_url(carol_report)
+    refute_selector :button, text: '削除', exact_text: true
+  end
 end
