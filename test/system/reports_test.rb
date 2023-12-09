@@ -61,4 +61,12 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text I18n.t('controllers.common.notice_destroy', name: Report.model_name.human)
     assert_selector 'h1', text: I18n.t('views.common.title_index', name: Report.model_name.human)
   end
+
+  test 'should not destroy and edit Report when current user is not author' do
+    bob_report = reports(:bob_report)
+    visit report_url (bob_report)
+    
+    refute_selector :button, text: 'この日報を削除'
+    refute_selector :button, text: 'この日報を編集'
+  end
 end
