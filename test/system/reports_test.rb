@@ -64,8 +64,8 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'should not destroy and edit Report when current user is not author' do
     bob_report = reports(:bob_report)
-    visit report_url (bob_report)
-    
+    visit report_url(bob_report)
+
     refute_selector :button, text: 'この日報を削除'
     refute_selector :button, text: 'この日報を編集'
   end

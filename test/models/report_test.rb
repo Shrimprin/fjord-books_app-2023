@@ -15,7 +15,7 @@ class ReportTest < ActiveSupport::TestCase
 
   test '#created_on should return the date of creation' do
     alice_report = reports(:alice_report)
-    assert_equal Date.parse("2021-11-30"), alice_report.created_on
+    assert_equal Date.parse('2021-11-30'), alice_report.created_on
   end
 
   test '#save_mentions' do
